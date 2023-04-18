@@ -1,51 +1,71 @@
+<!-- <!DOCTYPE html>
 <html>
-<head>
-  <title>Rotation</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
-</head>
-<body>
-<script type="text/javascript">
-    AFRAME.registerComponent('drag-rotate-component',{
-      schema : { speed : {default:3}},
-      init : function(){
-        this.ifMouseDown = false;
-        this.x_cord = 0;
-        this.y_cord = 0;
-        document.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
-        document.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
-        document.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
-      },
-      OnDocumentMouseDown : function(event){
-        this.ifMouseDown = true;
-        this.x_cord = event.clientX;
-        this.y_cord = event.clientY;
-      },
-      OnDocumentMouseUp : function(){
-        this.ifMouseDown = false;
-      },
-      OnDocumentMouseMove : function(event)
-      {
-        if(this.ifMouseDown)
-        {
-          var temp_x = event.clientX-this.x_cord;
-          var temp_y = event.clientY-this.y_cord;
-          if(Math.abs(temp_y)<Math.abs(temp_x))
+  <head>
+    <title>Rotation</title>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+        AFRAME.registerComponent('drag-rotate-component',{
+          schema : { speed : {default:3}},
+          init : function(){
+            this.ifMouseDown = false;
+            this.x_cord = 0;
+            this.y_cord = 0;
+            document.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
+            document.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
+            document.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
+          },
+          OnDocumentMouseDown : function(event){
+            this.ifMouseDown = true;
+            this.x_cord = event.clientX;
+            this.y_cord = event.clientY;
+          },
+          OnDocumentMouseUp : function(){
+            this.ifMouseDown = false;
+          },
+          OnDocumentMouseMove : function(event)
           {
-            this.el.object3D.rotateY(temp_x*this.data.speed/1000);
+            if(this.ifMouseDown)
+            {
+              var temp_x = event.clientX-this.x_cord;
+              var temp_y = event.clientY-this.y_cord;
+              if(Math.abs(temp_y)<Math.abs(temp_x))
+              {
+                this.el.object3D.rotateY(temp_x*this.data.speed/1000);
+              }
+              else
+              {
+                this.el.object3D.rotateX(temp_y*this.data.speed/1000);
+              }
+              this.x_cord = event.clientX;
+              this.y_cord = event.clientY;
+            }
           }
-          else
-          {
-            this.el.object3D.rotateX(temp_y*this.data.speed/1000);
-          }
-          this.x_cord = event.clientX;
-          this.y_cord = event.clientY;
-        }
-      }
-    });
-  </script>
-  <a-scene>
-    <a-box id="house" color="green" position="1 1 -2" drag-rotate-component></a-box>
-    <a-camera position="0 0 0" look-controls="enabled:false">
-    </a-camera>
-  </a-scene>
+        });
+      </script>
+    <a-scene vr-mode-ui="enabled: false" background="color: red">
+      <a-assets>
+        <a-asset-item id="#solution" src="./solution.glb"></a-asset-item>
+      </a-assets>
+      <a-entity id="model-house" gltf-model="./solution.glb" position="-1.5 1.7 1" rotation="0 180 -90"></a-entity>
+      <a-camera position="0 1.6 0" look-controls="enabled:false"></a-camera>
+    </a-scene>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House</title>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="solution" src="SEL-and-Spatial-Thinking/Assets/solution.glb"></a-asset-item>
+      </a-assets>
+      <a-entity gltf-model="#solution" position="0 0 0" scale="1 1 1"></a-entity>
+      <a-camera position="0 1.6 0"></a-camera>
+    </a-scene>
+  </body>
+</html>
