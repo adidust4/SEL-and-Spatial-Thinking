@@ -1,58 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>Rotation</title>
-    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-        AFRAME.registerComponent('drag-rotate-component',{
-          schema : { speed : {default:3}},
-          init : function(){
-            this.ifMouseDown = false;
-            this.x_cord = 0;
-            this.y_cord = 0;
-            document.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
-            document.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
-            document.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
-          },
-          OnDocumentMouseDown : function(event){
-            this.ifMouseDown = true;
-            this.x_cord = event.clientX;
-            this.y_cord = event.clientY;
-          },
-          OnDocumentMouseUp : function(){
-            this.ifMouseDown = false;
-          },
-          OnDocumentMouseMove : function(event)
-          {
-            if(this.ifMouseDown)
-            {
-              var temp_x = event.clientX-this.x_cord;
-              var temp_y = event.clientY-this.y_cord;
-              if(Math.abs(temp_y)<Math.abs(temp_x))
-              {
-                this.el.object3D.rotateY(temp_x*this.data.speed/1000);
-              }
-              else
-              {
-                this.el.object3D.rotateX(temp_y*this.data.speed/1000);
-              }
-              this.x_cord = event.clientX;
-              this.y_cord = event.clientY;
-            }
-          }
-        });
-      </script>
-    <a-scene vr-mode-ui="enabled: false" background="color: red">
-      <a-assets>
-        <a-asset-item id="#solution" src="./solution.glb"></a-asset-item>
-      </a-assets>
-      <a-entity id="model-house" gltf-model="./solution.glb" position="-1.5 1.7 1" rotation="0 180 -90"></a-entity>
-      <a-camera position="0 1.6 0" look-controls="enabled:false"></a-camera>
-    </a-scene>
-  </body>
-</html> -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -60,51 +5,42 @@
     <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
   </head>
   <body>
-    <script type="text/javascript">
-      AFRAME.registerComponent('drag-rotate-component',{
-        schema : { speed : {default:3}},
-        init : function(){
-          this.ifMouseDown = false;
-          this.x_cord = 0;
-          this.y_cord = 0;
-          document.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
-          document.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
-          document.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
-        },
-        OnDocumentMouseDown : function(event){
-          this.ifMouseDown = true;
-          this.x_cord = event.clientX;
-          this.y_cord = event.clientY;
-        },
-        OnDocumentMouseUp : function(){
-          this.ifMouseDown = false;
-        },
-        OnDocumentMouseMove : function(event)
-        {
-          if(this.ifMouseDown)
-          {
-            var temp_x = event.clientX-this.x_cord;
-            var temp_y = event.clientY-this.y_cord;
-            if(Math.abs(temp_y)<Math.abs(temp_x))
-            {
-              this.el.object3D.rotateY(temp_x*this.data.speed/1000);
-            }
-            else
-            {
-              this.el.object3D.rotateX(temp_y*this.data.speed/1000);
-            }
-            this.x_cord = event.clientX;
-            this.y_cord = event.clientY;
-          }
-        }
-      });
-    </script>
+    <script src="script.js"></script>
+
     <a-scene>
       <a-assets>
-        <a-asset-item id="solution" src="solution.gltf"></a-asset-item>
+        <a-asset-item id="solution" src="Assets/solution.gltf"></a-asset-item>
+        <a-asset-item id="flattened" src="Assets/flattened_solution.glb"></a-asset-item>
+        <a-asset-item id="blank" src="Assets/blank.glb"></a-asset-item>
+        <a-asset-item id="front" src="Assets/front.glb"></a-asset-item>
+        <a-asset-item id="back" src="Assets/back.glb"></a-asset-item>
+        <a-asset-item id="left" src="Assets/left.glb"></a-asset-item>
+        <a-asset-item id="right" src="Assets/right.glb"></a-asset-item>
+        <a-asset-item id="top" src="Assets/top.glb"></a-asset-item>
       </a-assets>
-      <a-entity gltf-model="#solution" position="0 2 -1.5" drag-rotate-component></a-entity>
+
+      <a-entity id="back" gltf-model="#back" visible="false"></a-entity>
+      <a-entity id="front" gltf-model="#front" visible="false"></a-entity>
+      <a-entity id="left" gltf-model="#left" visible="false"></a-entity>
+      <a-entity id="right" gltf-model="#right" visible="false"></a-entity>
+      <a-entity id="top" gltf-model="#top" visible="false"></a-entity>
+      <a-entity id="bottom" gltf-model="#bottom" visible="false"></a-entity>
+
+      <!-- Original 2d house -->
+      <a-entity click-to-replace id="blank-back" gltf-model="#blank" position="0 2.35 -1.5"></a-entity>
+      <a-entity click-to-replace id="blank-bottom" gltf-model="#blank" position="0 1.85 -1.5"></a-entity>
+      <a-entity click-to-replace id="blank-left" gltf-model="#blank" position="-0.54 1.85 -1.5"></a-entity>
+      <a-entity click-to-replace id="blank-right" gltf-model="#blank" position="0.54 1.85 -1.5"></a-entity>
+      <a-entity click-to-replace id="blank-front" gltf-model="#blank" position="0 1.35 -1.5"></a-entity>
+      <a-entity click-to-replace id="blank-top" gltf-model="#blank" position="0 0.85 -1.5"></a-entity>
+
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
       <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
+
+      <!-- <a-entity gltf-model="#solution" position="0 2 -1.5" drag-rotate-component></a-entity> -->
+      <!-- <a-entity gltf-model="#flattened" position="0 2.31 -1.5"></a-entity> -->
+
     </a-scene>
+
   </body>
 </html>
