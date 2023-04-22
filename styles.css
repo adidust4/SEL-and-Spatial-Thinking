@@ -1,0 +1,15 @@
+.box-construct{
+    width: 3in;
+    height: 3in;
+    position: relative;
+    padding-top: 5%;
+    padding-left: 40%;
+}
+
+.solution{
+    width: 3in;
+    height: 3in;
+    position: relative;
+    padding-top: 2%;
+    padding-left: 10%;
+}

@@ -36,12 +36,24 @@ AFRAME.registerComponent('drag-rotate-component',{
     }
   });
 
+var index = 0;
+
 AFRAME.registerComponent('click-to-replace', {
     init : function(){
-        const modelList = ["#front", "#back", "#left", "#right", "#top", "#bottom"]
+        const modelList = ["#front", "#back", "#left", "#right", "#top", "#blank"]
         this.el.addEventListener("click", function(e) {
-            e.target.removeAttribute('gltf-model');
-            e.target.setAttribute('gltf-model', '#back')
+            var selected = '#'.concat(e.target.getAttribute('id'));
+            if(selected == modelList[index]){
+                e.target.removeAttribute('gltf-model');
+                e.target.setAttribute('gltf-model', modelList[index])
+                index = (index + 1) % 6;
+                if(index == 5){
+                    console.log('congrats!')
+                }
+            }
+            else{
+                console.log('wrong')
+            }
         });
 
     }

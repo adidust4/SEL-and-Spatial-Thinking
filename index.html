@@ -3,44 +3,47 @@
   <head>
     <title>House</title>
     <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
     <script src="script.js"></script>
 
-    <a-scene>
-      <a-assets>
-        <a-asset-item id="solution" src="Assets/solution.gltf"></a-asset-item>
-        <a-asset-item id="flattened" src="Assets/flattened_solution.glb"></a-asset-item>
-        <a-asset-item id="blank" src="Assets/blank.glb"></a-asset-item>
-        <a-asset-item id="front" src="Assets/front.glb"></a-asset-item>
-        <a-asset-item id="back" src="Assets/back.glb"></a-asset-item>
-        <a-asset-item id="left" src="Assets/left.glb"></a-asset-item>
-        <a-asset-item id="right" src="Assets/right.glb"></a-asset-item>
-        <a-asset-item id="top" src="Assets/top.glb"></a-asset-item>
-      </a-assets>
+    <div class="solution">
+      <a-scene embedded>
+        <a-assets>
+          <a-asset-item id="solution" src="Assets/solution.gltf"></a-asset-item>
+        </a-assets>
+        <a-entity gltf-model="#solution" position="0 2 -1.5" drag-rotate-component></a-entity>
+        <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
+      </a-scene>
+    </div>
 
-      <a-entity id="back" gltf-model="#back" visible="false"></a-entity>
-      <a-entity id="front" gltf-model="#front" visible="false"></a-entity>
-      <a-entity id="left" gltf-model="#left" visible="false"></a-entity>
-      <a-entity id="right" gltf-model="#right" visible="false"></a-entity>
-      <a-entity id="top" gltf-model="#top" visible="false"></a-entity>
-      <a-entity id="bottom" gltf-model="#bottom" visible="false"></a-entity>
+    <div class="box-construct">
+      <a-scene embedded>
+        <a-assets>
+          <a-asset-item id="blank" src="Assets/blank.glb"></a-asset-item>
+          <a-asset-item id="front" src="Assets/front.glb"></a-asset-item>
+          <a-asset-item id="back" src="Assets/back.glb"></a-asset-item>
+          <a-asset-item id="left" src="Assets/left.glb"></a-asset-item>
+          <a-asset-item id="right" src="Assets/right.glb"></a-asset-item>
+          <a-asset-item id="top" src="Assets/top.glb"></a-asset-item>
+        </a-assets>
 
-      <!-- Original 2d house -->
-      <a-entity click-to-replace id="blank-back" gltf-model="#blank" position="0 2.35 -1.5"></a-entity>
-      <a-entity click-to-replace id="blank-bottom" gltf-model="#blank" position="0 1.85 -1.5"></a-entity>
-      <a-entity click-to-replace id="blank-left" gltf-model="#blank" position="-0.54 1.85 -1.5"></a-entity>
-      <a-entity click-to-replace id="blank-right" gltf-model="#blank" position="0.54 1.85 -1.5"></a-entity>
-      <a-entity click-to-replace id="blank-front" gltf-model="#blank" position="0 1.35 -1.5"></a-entity>
-      <a-entity click-to-replace id="blank-top" gltf-model="#blank" position="0 0.85 -1.5"></a-entity>
+        <!-- <a-entity gltf-model="#solution" drag-rotate-component></a-entity> -->
 
-      <a-entity cursor="rayOrigin:mouse"></a-entity>
-      <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
+        <!-- Original 2d house -->
+        <a-entity click-to-replace id="back" gltf-model="#blank" position="0 2.35 -1.5"></a-entity>
+        <a-entity click-to-replace id="bottom" gltf-model="#blank" position="0 1.85 -1.5"></a-entity>
+        <a-entity click-to-replace id="left" gltf-model="#blank" position="-0.54 1.85 -1.5"></a-entity>
+        <a-entity click-to-replace id="right" gltf-model="#blank" position="0.54 1.85 -1.5"></a-entity>
+        <a-entity click-to-replace id="front" gltf-model="#blank" position="0 1.35 -1.5"></a-entity>
+        <a-entity click-to-replace id="top" gltf-model="#blank" position="0 0.85 -1.5"></a-entity>
 
-      <!-- <a-entity gltf-model="#solution" position="0 2 -1.5" drag-rotate-component></a-entity> -->
-      <!-- <a-entity gltf-model="#flattened" position="0 2.31 -1.5"></a-entity> -->
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+        <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
 
-    </a-scene>
+      </a-scene>
+    </div>
 
   </body>
 </html>
