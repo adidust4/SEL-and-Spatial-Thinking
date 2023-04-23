@@ -1,3 +1,28 @@
+.background {
+    background-color: darkgreen;
+}
+
+.map {
+    visibility: visible;
+}
+
+.house {
+    visibility: hidden;
+}
+
+.map-container {
+    position: relative;
+}
+
+.map-image {
+    width: 6in;
+    height: 6.5in;
+    position: absolute;
+    object-fit: contain;
+    padding-top: 1%;
+    padding-left: 32%;
+}
+
 .box-construct{
     /* background-color: blue; */
     width: 3in;
@@ -14,10 +39,6 @@
     position: absolute;
     padding-top: 2%;
     padding-left: 10%;
-}
-
-.background {
-    background-color: darkgreen;
 }
 
 .textbox {

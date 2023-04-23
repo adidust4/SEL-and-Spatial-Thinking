@@ -8,7 +8,11 @@
   <body class="background">
     <script src="script.js"></script>
 
-    <div class="solution">
+    <div class="map map-container">
+      <img src="Assets/map.jpg" alt="map" class="map-image">
+    </div>
+
+    <div class="house solution">
       <a-scene embedded>
         <a-assets>
           <a-asset-item id="solution" src="Assets/solution.gltf"></a-asset-item>
@@ -18,7 +22,7 @@
       </a-scene>
     </div>
 
-    <div class="box-construct">
+    <div class="house box-construct">
       <a-scene embedded>
         <a-assets>
           <a-asset-item id="blank" src="Assets/blank.glb"></a-asset-item>
@@ -45,7 +49,19 @@
       </a-scene>
     </div>
 
+    <script>
+      function showHouse() {
+        for (const e of document.getElementsByClassName("house")) {
+          e.style.visibility="visible";
+        }
+        for (const e of document.getElementsByClassName("map")) {
+          e.style.visibility="hidden";
+        }
+      }
+    </script>
+
     <div class="textbox">
+      <button class="map" onclick="showHouse()">Next</button>
       <p>We'll start with my plan. Can you help us place the door first? 
          Interact with the finished house model to find where the door should 
          be, then click on the blueprint where you think it should be placed.</p>
