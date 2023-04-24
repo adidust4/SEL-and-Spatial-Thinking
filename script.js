@@ -55,7 +55,7 @@ AFRAME.registerComponent('click-to-replace', {
             }
           }
           else{
-              console.log('wrong')
+              instructions.innerHTML = "Not quite. Try placing it again."
           }
         });
 
