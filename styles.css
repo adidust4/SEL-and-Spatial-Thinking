@@ -9,14 +9,17 @@
 .house {
     visibility: hidden;
 }
+.house-solution {
+    visibility: hidden;
+}
 
 .map-container {
     position: relative;
 }
 
 .map-image {
-    width: 6in;
-    height: 6.5in;
+    width: 5in;
+    height: 5.5in;
     position: absolute;
     object-fit: contain;
     padding-top: 1%;
@@ -32,7 +35,7 @@
     padding-left: 40%;
 }
 
-.solution{
+.house-solution{
     background-color: black;
     width: 3in;
     height: 3in;
