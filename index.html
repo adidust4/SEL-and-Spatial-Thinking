@@ -12,12 +12,12 @@
       <img src="Assets/map.jpg" alt="map" class="map-image">
     </div>
 
-    <div class="house solution">
+    <div class="house-solution">
       <a-scene embedded>
         <a-assets>
-          <a-asset-item id="solution" src="Assets/solution.gltf"></a-asset-item>
+          <a-asset-item id="solution" src="Assets/solution.glb"></a-asset-item>
         </a-assets>
-        <a-entity gltf-model="#solution" position="0 2 -1.5" drag-rotate-component></a-entity>
+        <a-entity gltf-model="#solution" position="0 2.35 -1.5" drag-rotate-component></a-entity>
         <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
       </a-scene>
     </div>
@@ -32,8 +32,6 @@
           <a-asset-item id="right" src="Assets/right.glb"></a-asset-item>
           <a-asset-item id="top" src="Assets/top.glb"></a-asset-item>
         </a-assets>
-
-        <!-- <a-entity gltf-model="#solution" drag-rotate-component></a-entity> -->
 
         <!-- Original 2d house -->
         <a-entity click-to-replace id="back" gltf-model="#blank" position="0 2.35 -1.5"></a-entity>
@@ -54,6 +52,9 @@
         for (const e of document.getElementsByClassName("house")) {
           e.style.visibility="visible";
         }
+        for (const e of document.getElementsByClassName("house-solution")) {
+          e.style.visibility="visible";
+        }
         for (const e of document.getElementsByClassName("map")) {
           e.style.visibility="hidden";
         }
@@ -62,7 +63,7 @@
 
     <div class="textbox">
       <button class="map" onclick="showHouse()">Next</button>
-      <p>We'll start with my plan. Can you help us place the door first? 
+      <p id="instruction">We'll start with my plan. Can you help us place the door first? 
          Interact with the finished house model to find where the door should 
          be, then click on the blueprint where you think it should be placed.</p>
     </div>
