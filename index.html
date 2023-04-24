@@ -12,15 +12,15 @@
       <img src="Assets/map.jpg" alt="map" class="map-image">
     </div>
 
-    <div class="house-solution">
-      <a-scene embedded>
-        <a-assets>
-          <a-asset-item id="solution" src="Assets/solution.glb"></a-asset-item>
-        </a-assets>
-        <a-entity gltf-model="#solution" position="0 2.35 -1.5" drag-rotate-component></a-entity>
-        <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
-      </a-scene>
+    <div class="solution-house">
+      <button onclick="changeVR()"></button>
     </div>
+
+    <script>
+      function changeVR(){
+        
+      }
+    </script>
 
     <div class="house box-construct">
       <a-scene embedded>
@@ -40,6 +40,7 @@
         <a-entity click-to-replace id="right" gltf-model="#blank" position="0.54 1.85 -1.5"></a-entity>
         <a-entity click-to-replace id="front" gltf-model="#blank" position="0 1.35 -1.5"></a-entity>
         <a-entity click-to-replace id="top" gltf-model="#blank" position="0 0.85 -1.5"></a-entity>
+        <a-entity gltf-model="#solution" position="0 1 -2" drag-rotate-component visible="false"></a-entity>
 
         <a-entity cursor="rayOrigin:mouse"></a-entity>
         <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
