@@ -28,11 +28,11 @@
 
 .box-construct{
     /* background-color: blue; */
-    width: 3in;
-    height: 3.5in;
+    width: 5in;
+    height: 5.5in;
     position: relative;
-    padding-top: 20%;
-    padding-left: 40%;
+    padding-bottom: 2%;
+    padding-left: 30%;
 }
 
 .house-solution{

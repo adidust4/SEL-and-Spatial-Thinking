@@ -40,7 +40,7 @@ var index = 0;
 
 AFRAME.registerComponent('click-to-replace', {
     init : function(){
-        const modelList = ["#front", "#back", "#left", "#right", "#top", "#blank"];
+        const modelList = ["#front", "#back", "#left", "#right", "#top", "#bottom"];
         const instructionText = ["Now can you help us place the back door?", "I want this stripey design on the side please.", "We're hoping for this curved window if you could help us find where to put it.", "How do we connect the ceiling line to the side line design?"];
         this.el.addEventListener("click", function(e) {
           instructions = document.getElementById("instruction");
@@ -61,5 +61,3 @@ AFRAME.registerComponent('click-to-replace', {
 
     }
 })
-
-

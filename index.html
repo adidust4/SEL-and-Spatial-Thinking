@@ -12,17 +12,10 @@
       <img src="Assets/map.jpg" alt="map" class="map-image">
     </div>
 
-    <div class="solution-house">
-      <button onclick="changeVR()"></button>
-    </div>
-
-    <script>
-      function changeVR(){
-        
-      }
-    </script>
 
     <div class="house box-construct">
+      <button id="button">Change House View</button>
+
       <a-scene embedded>
         <a-assets>
           <a-asset-item id="blank" src="Assets/blank.glb"></a-asset-item>
@@ -34,18 +27,30 @@
         </a-assets>
 
         <!-- Original 2d house -->
-        <a-entity click-to-replace id="back" gltf-model="#blank" position="0 2.35 -1.5"></a-entity>
-        <a-entity click-to-replace id="bottom" gltf-model="#blank" position="0 1.85 -1.5"></a-entity>
-        <a-entity click-to-replace id="left" gltf-model="#blank" position="-0.54 1.85 -1.5"></a-entity>
-        <a-entity click-to-replace id="right" gltf-model="#blank" position="0.54 1.85 -1.5"></a-entity>
-        <a-entity click-to-replace id="front" gltf-model="#blank" position="0 1.35 -1.5"></a-entity>
-        <a-entity click-to-replace id="top" gltf-model="#blank" position="0 0.85 -1.5"></a-entity>
-        <a-entity gltf-model="#solution" position="0 1 -2" drag-rotate-component visible="false"></a-entity>
+        <a-entity click-to-replace id="back" gltf-model="#blank" position="0 2.35 -1.5" visible="true"></a-entity>
+        <a-entity click-to-replace id="left" gltf-model="#blank" position="-0.54 1.85 -1.5" visible="true"></a-entity>
+        <a-entity click-to-replace id="right" gltf-model="#blank" position="0.54 1.85 -1.5" visible="true"></a-entity>
+        <a-entity click-to-replace id="front" gltf-model="#blank" position="0 1.35 -1.5" visible="true"></a-entity>
+        <a-entity click-to-replace id="top" gltf-model="#blank" position="0 0.85 -1.5" visible="true"></a-entity>
+        <a-entity click-to-replace id="bottom" gltf-model="#blank" position="0 1.85 -1.5" visible="true"></a-entity>
 
+        <a-entity id="solution" gltf-model="#solution" position="0 1 -2" drag-rotate-component visible="false"></a-entity>
         <a-entity cursor="rayOrigin:mouse"></a-entity>
         <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
 
       </a-scene>
+      <script type="text/javascript">
+        document.getElementById("button").addEventListener("click", () => {
+          console.log("clicked");
+          document.getElementById("solution").setAttribute("visible", true);
+          document.getElementById("back").setAttribute("visible", false);
+          document.getElementById("front").setAttribute("visible", false);
+          document.getElementById("left").setAttribute("visible", false);
+          document.getElementById("right").setAttribute("visible", false);
+          document.getElementById("top").setAttribute("visible", false);
+          document.getElementById("bottom").setAttribute("visible", false);
+        })
+      </script>
     </div>
 
     <script>
