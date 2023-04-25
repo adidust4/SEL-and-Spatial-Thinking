@@ -9,9 +9,6 @@
 .house {
     visibility: hidden;
 }
-.house-solution {
-    visibility: hidden;
-}
 
 .map-container {
     position: relative;
@@ -32,15 +29,6 @@
     position: relative;
     padding-bottom: 2%;
     padding-left: 30%;
-}
-
-.house-solution{
-    background-color: black;
-    width: 3in;
-    height: 3in;
-    position: absolute;
-    padding-top: 2%;
-    padding-left: 10%;
 }
 
 .textbox {

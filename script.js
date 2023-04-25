@@ -40,16 +40,17 @@ var index = 0;
 
 AFRAME.registerComponent('click-to-replace', {
     init : function(){
-        const modelList = ["#front", "#back", "#left", "#right", "#top", "#bottom"];
-        const instructionText = ["Now can you help us place the back door?", "I want this stripey design on the side please.", "We're hoping for this curved window if you could help us find where to put it.", "How do we connect the ceiling line to the side line design?"];
+        const modelList = ["#back", "#left", "#right", "#top", "#blank"];
+        const instructionText = ["I want this stripey design on the side please.", "We're hoping for this curved window if you could help us find where to put it.", "How do we connect the ceiling line to the side line design?", "Congratulations! Thank you for building my house!"];
         this.el.addEventListener("click", function(e) {
           instructions = document.getElementById("instruction");
           var selected = '#'.concat(e.target.getAttribute('id'));
-          if(selected == modelList[index]){
+          console.log("clicked")
+          if(selected == (modelList[index].concat("-house"))){
             e.target.removeAttribute('gltf-model');
             e.target.setAttribute('gltf-model', modelList[index]);
             instructions.innerHTML = instructionText[index];
-            index = (index + 1) % 6;
+            index = (index + 1) % 5;
             if(index == 5){
                 instructions.innerHTML = "Congratulations! Thank you for building my house!";
             }
