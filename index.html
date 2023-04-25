@@ -14,7 +14,7 @@
 
 
     <div class="house box-construct">
-      <button id="button">Change House View</button>
+      <button id="button">View Solution House</button>
 
       <a-scene embedded>
         <a-assets>
@@ -24,31 +24,39 @@
           <a-asset-item id="left" src="Assets/left.glb"></a-asset-item>
           <a-asset-item id="right" src="Assets/right.glb"></a-asset-item>
           <a-asset-item id="top" src="Assets/top.glb"></a-asset-item>
+          <a-asset-item id="solution" src="Assets/solution.glb"></a-asset-item>
         </a-assets>
 
+        <a-entity id="solution-house" gltf-model="#solution" position="0 1.8 -1.5" drag-rotate-component visible="false"></a-entity>
         <!-- Original 2d house -->
-        <a-entity click-to-replace id="back" gltf-model="#blank" position="0 2.35 -1.5" visible="true"></a-entity>
-        <a-entity click-to-replace id="left" gltf-model="#blank" position="-0.54 1.85 -1.5" visible="true"></a-entity>
-        <a-entity click-to-replace id="right" gltf-model="#blank" position="0.54 1.85 -1.5" visible="true"></a-entity>
-        <a-entity click-to-replace id="front" gltf-model="#blank" position="0 1.35 -1.5" visible="true"></a-entity>
-        <a-entity click-to-replace id="top" gltf-model="#blank" position="0 0.85 -1.5" visible="true"></a-entity>
-        <a-entity click-to-replace id="bottom" gltf-model="#blank" position="0 1.85 -1.5" visible="true"></a-entity>
+        <a-entity click-to-replace id="back-house" gltf-model="#blank" position="0 2.35 -1.5" rotation="0 0 0" visible="true"></a-entity>
+        <a-entity click-to-replace id="right-house" gltf-model="#blank" position="-0.54 1.85 -1.5" rotation="0 0 90" visible="true"></a-entity>
+        <a-entity click-to-replace id="left-house" gltf-model="#blank" position="0.54 1.85 -1.5" rotation="0 0 90" visible="true"></a-entity>
+        <a-entity click-to-replace id="front-house" gltf-model="#front" position="0 1.350 -1.449" rotation="0 0 180" visible="true"></a-entity>
+        <a-entity click-to-replace id="top-house" gltf-model="#blank" position="0 0.85 -1.5" rotation="0 0 270" visible="true"></a-entity>
+        <a-entity click-to-replace id="bottom-house" gltf-model="#blank" position="0 1.85 -1.5" visible="true"></a-entity>
 
-        <a-entity id="solution" gltf-model="#solution" position="0 1 -2" drag-rotate-component visible="false"></a-entity>
         <a-entity cursor="rayOrigin:mouse"></a-entity>
         <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
 
       </a-scene>
       <script type="text/javascript">
         document.getElementById("button").addEventListener("click", () => {
-          console.log("clicked");
-          document.getElementById("solution").setAttribute("visible", true);
-          document.getElementById("back").setAttribute("visible", false);
-          document.getElementById("front").setAttribute("visible", false);
-          document.getElementById("left").setAttribute("visible", false);
-          document.getElementById("right").setAttribute("visible", false);
-          document.getElementById("top").setAttribute("visible", false);
-          document.getElementById("bottom").setAttribute("visible", false);
+          isHidden= document.getElementById("solution-house").getAttribute('visible') == true;
+          console.log(document.getElementById("solution-house").getAttribute('gltf-model'));
+          document.getElementById("back-house").setAttribute('visible', isHidden);
+          document.getElementById("front-house").setAttribute('visible', isHidden);
+          document.getElementById("bottom-house").setAttribute('visible', isHidden);
+          document.getElementById("top-house").setAttribute('visible', isHidden);
+          document.getElementById("left-house").setAttribute('visible', isHidden);
+          document.getElementById("right-house").setAttribute('visible', isHidden);
+          document.getElementById("solution-house").setAttribute('visible', !isHidden);
+          if(isHidden){
+            document.getElementById("button").innerHTML = "View Solution House";
+          }
+          else{
+            document.getElementById("button").innerHTML = "Continue Placing Pieces";
+          }
         })
       </script>
     </div>
@@ -266,6 +274,23 @@
     document.getElementById("next").style.display = "inline";
   }
 </script>
+    <script>
+      function showHouse() {
+        for (const e of document.getElementsByClassName("house")) {
+          e.style.visibility="visible";
+        }
+        for (const e of document.getElementsByClassName("map")) {
+          e.style.visibility="hidden";
+        }
+      }
+    </script>
+
+    <div class="textbox">
+      <button class="map" onclick="showHouse()">Next</button>
+      <p id="instruction">We'll start with my plan. Can you help us place the back door first? 
+         Interact with the finished house model to find where the door should 
+         be, then click on the blueprint where you think it should be placed.</p>
+    </div>
 
   </body>
 </html>
