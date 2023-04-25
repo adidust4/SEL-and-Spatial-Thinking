@@ -41,24 +41,14 @@ var index = 0;
 AFRAME.registerComponent('click-to-replace', {
     init : function(){
         const modelList = ["#back", "#left", "#right", "#top", "#blank"];
-        const instructionText = ["I want this stripey design on the side please.", "We're hoping for this curved window if you could help us find where to put it.", "How do we connect the ceiling line to the side line design?", "Congratulations! Thank you for building my house!"];
         this.el.addEventListener("click", function(e) {
-          instructions = document.getElementById("instruction");
           var selected = '#'.concat(e.target.getAttribute('id'));
           console.log("clicked")
           if(selected == (modelList[index].concat("-house"))){
             e.target.removeAttribute('gltf-model');
             e.target.setAttribute('gltf-model', modelList[index]);
-            instructions.innerHTML = instructionText[index];
             index = (index + 1) % 5;
-            if(index == 5){
-                instructions.innerHTML = "Congratulations! Thank you for building my house!";
-            }
-          }
-          else{
-              instructions.innerHTML = "Not quite. Try placing it again."
-          }
-        });
+          };
 
-    }
+    })}
 })
