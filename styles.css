@@ -27,7 +27,6 @@
 }
 
 .box-construct{
-    /* background-color: blue; */
     width: 5in;
     height: 5.5in;
     position: relative;
@@ -55,4 +54,37 @@
     padding-bottom: 0.55%;
     padding-left: 2.25%;
     padding-right: 2.25%;
+}
+
+.dialogue-button {
+    width: 1.5in;
+    background-color: rgb(207, 220, 252);
+    border: none;
+    cursor: pointer;
+    font-size: 4.5vw;
+    transition-duration: 0.4s;
+    float: right;
+    position: relative;
+}
+.dialogue-button:hover {
+    background-color: rgb(161, 187, 255);
+}
+
+.go-button {
+    width: 1.5in;
+    background-color: rgb(207, 220, 252);
+    border: none;
+    cursor: pointer;
+    font-size: 3vw;
+    transition-duration: 0.4s;
+    float: right;
+    position: relative;
+    padding-top: 2%;
+}
+.go-button:hover {
+    background-color: rgb(161, 187, 255);
+}
+
+.hiddenText {
+    display: none;
 }
