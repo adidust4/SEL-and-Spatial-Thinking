@@ -5,7 +5,7 @@
     <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
-  <body class="background" onload="changeText()">
+  <body class="background">
     <script src="script.js"></script>
 
     <div class="map map-container">
@@ -55,15 +55,9 @@
 
 <div class="textbox">
   <button class="map go-button" type="button" onclick="showHouse(); changeText()"><b>Go</b></button>
-  <button id="next" class="house dialogue-button" type="button" onclick="changeText()"><b>&#8594</b></button>
+  <button class="house dialogue-button" type="button" onclick="changeText()"><b>&#8594</b></button>
 
-  <!-- <script>
-    // document.getElementById("next").addEventListener("click", changeText());
-    document.getElementById("next").addEventListener("click", () => { console.log("clicked")});
-  </script> -->
-
-  <p id="dialogue">Hello! We're having some technical difficulties.</p>
-  <p id="map" class="hiddenText"><b>Whiskers</b><br><br>Hi there! I'm Whiskers Fluffikins and this is my brother Mister Fluffikins.
+  <p id="map" style="visibility:visible"><b>Whiskers</b><br><br>Hi there! I'm Whiskers Fluffikins and this is my brother Mister Fluffikins.
     We just moved here! Our great uncle's mother's daughter's second cousin twice removed recently passed and left us a plot of land. 
     A friendly local already marked our map — see that red 'X'? That's where the land is. 
     Unfortunately, all these one-way streets are giving us a headache. 
@@ -74,9 +68,9 @@
     would really love to build our dream house here! This is what it looks like!</p>
   <!-- show completed house model -->
 
-  <p id="house-choice1" class="hiddenText"><b>Whiskers</b><br><br>Could you help us build our house?</p>
-  <p id="choice1-1" class="hiddenText"><b>You</b><br><br>But I already helped you.</p><br>
-  <p id="choice1-2" class="hiddenText">Absolutely!</p><br>
+  <p id="house-choice1" class="hiddenText"><b>Whiskers</b><br><br>Could you help us build our house?</p><br><br>
+  <p id="choice1-1" class="hiddenText">But I already helped you.</button></p>
+  <p id="choice1-2" class="hiddenText">Absolutely!</p>
   <p id="choice1-3" class="hiddenText">I, uh, think I left the oven on.</p>
   <p id="choice1-1-response" class="hiddenText"><b>Whiskers</b><br><br>Don't worry! We just need a third person to help guide us with 
     the blueprint. We'll do all the heavy lifting, promise! Please help us?</p>
@@ -84,10 +78,8 @@
   <p id="choice1-3-response" class="hiddenText"><b>Mister</b><br><br>Hm? But weren't you already out and about when we ran into you?</p>
   <!-- loop back to instr-choice1 -->
 
-  <p id="instr" class="hiddenText">Interact with the finished house to find the feature that the Fluffikins 
-    want, then click on the blueprint where you think it should be placed.</p>
-  <p id="house2" class="hiddenText"><b>Mister</b><br>This is the house blueprint. Can you help us place the front door first? Whiskers 
-    wants it in pink, it's driving me crazy.</p>
+  <p id="house2" class="hiddenText"><b>Mister</b><br><br>This is the house blueprint. Can you help us place the front door first? Whiskers 
+    says it should be purple.</p>
   <!-- user places front door -->
   <p id="house3" class="hiddenText"><b>Whiskers</b><br><br>Great! Now we need a back door. My brother insists that it must be black.</p>
   <!-- user places back door -->
@@ -98,12 +90,12 @@
     and up onto the roof should add a little character!</p>
   <!-- user places decoration parts -->
   <!-- blueprint is folded into finished house model -->
-  <p id="house6" class="hiddenText"><b>Mister</b><br><br>Wait just a minute. Look at our house! It's all mostly just one color!</p>
+  <p id="house6" class="hiddenText"><b>Mister</b><br><br>Done! Wait just a minute... look at our house! It's all mostly just one color!</p>
   <p id="house7" class="hiddenText"><b>Whiskers</b><br><br>Fish sticks. You have that black back door, brother. And if I do say so
     myself, it sure sticks out like a sore thumb! This is why I wanted it in lavendar.</p>
 
-  <p id="house-choice2" class="hiddenText"><b>Whiskers and Mister</b><br><br>What do you think?</p>
-  <p id="choice2-1" class="hiddenText"><b>You</b><br><br>Mister is right, a house all in one color is weird!</p><br>
+  <p id="house-choice2" class="hiddenText"><b>Whiskers and Mister</b><br><br>What do you think?</p><br><br>
+  <p id="choice2-1" class="hiddenText">Mister is right, a house all in one color is weird!</p>
   <p id="choice2-2" class="hiddenText">Whiskers is right.</p>
   <p id="choice2-3" class="hiddenText">It doesn't have to be one or the other.</p>
   <p id="choice2-1-response" class="hiddenText"><b>Mister</b><br><br>Exactly! Wait, but it's not all one color.</p>
@@ -119,6 +111,9 @@
     I can certainly rest easier knowing that it's a product of both our hard work!</p>
   <p id="house11" class="hiddenText"><b>Whiskers and Mister</b><br><br>And thank YOU, for helping us build our house and sorting out 
     our sibling quarrels!</p>
+  
+  <br><p id="instr" class="hiddenText">(Interact with the finished house to find the feature that the Fluffikins 
+    want, then click on the blueprint where you think it should be placed.)</p>
 
    <!-- <p id=""><b>name</b><br><br>text</p> -->
 
@@ -126,33 +121,85 @@
 
 <script>
     function changeText() {
-      /* Dialogue button doesn't work :( */
-      if (document.getElementById("dialogue").innerHTML == "Hello! We're having some technical difficulties.") {
-        document.getElementById("dialogue").innerHTML = document.getElementById("map").innerHTML;
-      } else if (document.getElementById("dialogue").innerHTML = document.getElementById("map").innerHTML) {
-        document.getElementById("dialogue").innerHTML = document.getElementById("house0").innerHTML;
-      } else if (document.getElementById("dialogue").innerHTML = document.getElementById("house0").innerHTML) {
-        document.getElementById("dialogue").innerHTML = document.getElementById("house1").innerHTML;
-      } else if (document.getElementById("dialogue").innerHTML = document.getElementById("house1").innerHTML) {
-        document.getElementById("dialogue").innerHTML = document.getElementById("house1-choice").innerHTML;
+      if(document.getElementById("map").style.visibility == "visible") {
+        document.getElementById("map").style.display = "none";
+        document.getElementById("map").style.visibility = "hidden";
+        document.getElementById("house0").style.display = "inline";
+      } else if (document.getElementById("house0").style.display == "inline") {
+        document.getElementById("house0").style.display = "none";
+        document.getElementById("house1").style.display = "inline";
+      } else if (document.getElementById("house1").style.display == "inline") {
+        document.getElementById("house1").style.display = "none";
+        document.getElementById("house-choice1").style.display = "inline";
+        document.getElementById("choice1-1").style.display = "block";
+        document.getElementById("choice1-2").style.display = "block";
+        document.getElementById("choice1-3").style.display = "block";
+      } else if (document.getElementById("house-choice1").style.display == "inline") {
+        document.getElementById("house-choice1").style.display = "none";
+        document.getElementById("choice1-1").style.display = "none";
+        document.getElementById("choice1-2").style.display = "none";
+        document.getElementById("choice1-3").style.display = "none";
+        document.getElementById("house2").style.display = "inline";
+        document.getElementById("instr").style.display = "block";
+      } else if (document.getElementById("house2").style.display == "inline") {
+        document.getElementById("house2").style.display = "none";
+        document.getElementById("house3").style.display = "inline";
+      } else if (document.getElementById("house3").style.display == "inline") {
+        document.getElementById("house3").style.display = "none";
+        document.getElementById("house4").style.display = "inline";
+      } else if (document.getElementById("house4").style.display == "inline") {
+        document.getElementById("house4").style.display = "none";
+        document.getElementById("house5").style.display = "inline";
+      } else if (document.getElementById("house5").style.display == "inline") {
+        document.getElementById("house5").style.display = "none";
+        document.getElementById("instr").style.display = "none";
+        document.getElementById("house6").style.display = "inline";
+      } else if (document.getElementById("house6").style.display == "inline") {
+        document.getElementById("house6").style.display = "none";
+        document.getElementById("house7").style.display = "inline";
+      } else if (document.getElementById("house7").style.display == "inline") {
+        document.getElementById("house7").style.display = "none";
+        document.getElementById("house-choice2").style.display = "inline";
+        document.getElementById("choice2-1").style.display = "block";
+        document.getElementById("choice2-2").style.display = "block";
+        document.getElementById("choice2-3").style.display = "block";
+      } else if (document.getElementById("house-choice2").style.display == "inline") {
+        document.getElementById("house-choice2").style.display = "none";
+        document.getElementById("choice2-1").style.display = "none";
+        document.getElementById("choice2-2").style.display = "none";
+        document.getElementById("choice2-3").style.display = "none";
+        document.getElementById("house8").style.display = "inline";
+      } else if (document.getElementById("house8").style.display == "inline") {
+        document.getElementById("house8").style.display = "none";
+        document.getElementById("house9").style.display = "inline";
+      } else if (document.getElementById("house9").style.display == "inline") {
+        document.getElementById("house9").style.display = "none";
+        document.getElementById("house10").style.display = "inline";
+      } else if (document.getElementById("house10").style.display == "inline") {
+        document.getElementById("house10").style.display = "none";
+        document.getElementById("dialogue-button").style.display = "none";
+        document.getElementById("house11").style.display = "inline";
       }
+    }
 
-      document.getElementById("next").addEventListener("click", () => { console.log("clicked")});
-  }
-
-  // function changeText() {
-  //   var currentText = document.getElementById("dialogue");
-  //   if (document.getElementById("dialogue").innerHTML == "Hello! We're having some technical difficulties. Try reloading the page!") {
-  //     currentText.innerHTML = document.getElementById("map").innerHTML;
-  //   } else {
-  //     // match dialogue text, get the element with matching test, get next element, set text
-  //     for (const e of document.getElementByClass("textbox")) {
-  //       if (e.innerHTML = document.getElementById("dialogue").innerHTML) {
-  //         currentText.innerHTML = e.nextElementSibling.innerHTML;
-  //       }
-  //     }
+  // function showResponse(obj) {
+  //   if (obj.getElementById == "choice1-1") {
+  //     document.getElementById("choice1-1").style.display = "none";
+  //     document.getElementById("choice1-1-response").style.display = "inline";
+  //     document.getElementById("dialogue-button").style.display = "none";
+  //     document.getElementById("dialogueChoice-button").style.display = "inline";
   //   }
   // }
+
+  // function backToChoice1() {
+  //   for (const e of document.getElementsByClassName("hiddenText")) {
+  //     e.style.display = "none";
+  //   }
+  //   document.getElementById("house1-choice").style.display = "inline";
+  //   document.getElementById("dialogue-button").style.display = "inline";
+  //   document.getElementById("dialogueChoice-button").style.display = "none";
+  // }
+
 </script>
 
 <script>
