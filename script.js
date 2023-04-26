@@ -40,7 +40,7 @@ var index = 0;
 
 AFRAME.registerComponent('click-to-replace', {
     init : function(){
-        const modelList = ["#back", "#left", "#right", "#top", "#blank"];
+        const modelList = ["#back", "#right", "#left", "#top", "#blank"];
         this.el.addEventListener("click", function(e) {
           var selected = '#'.concat(e.target.getAttribute('id'));
           console.log("clicked")
