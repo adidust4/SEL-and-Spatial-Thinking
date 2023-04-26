@@ -12,9 +12,10 @@
       <img src="Assets/map.jpg" alt="map" class="map-image">
     </div>
 
+    <button id="button" class="house solution-button">View Completed House</button>
 
     <div class="house box-construct">
-      <button id="button">View Solution House</button>
+      <!-- <button id="button" class="solution-button">View Completed House</button> -->
 
       <a-scene embedded>
         <a-assets>
@@ -52,7 +53,7 @@
           document.getElementById("right-house").setAttribute('visible', isHidden);
           document.getElementById("solution-house").setAttribute('visible', !isHidden);
           if(isHidden){
-            document.getElementById("button").innerHTML = "View Solution House";
+            document.getElementById("button").innerHTML = "View Completed House";
           }
           else{
             document.getElementById("button").innerHTML = "Continue Placing Pieces";
@@ -61,228 +62,218 @@
       </script>
     </div>
 
-<div class="textbox">
-  <button class="map go-button" type="button" onclick="showHouse(); changeText()"><b>Go</b></button>
-  <button id="next" class="house dialogue-button" type="button" onclick="changeText()" display="inline"><b>&#8594</b></button>
-  <button id="nextChoice1" class="house dialogueChoice-button" type="button" onclick="backToChoices1()" display="none"><b>&#8594</b></button>
-  <button id="nextChoice2" class="house dialogueChoice-button" type="button" onclick="backToChoices2()" display="none"><b>&#8594</b></button>
+    <div class="textbox">
+      <button class="map go-button" type="button" onclick="showHouse(); changeText()"><b>Go</b></button>
+      <button id="next" class="house dialogue-button" type="button" onclick="changeText()" display="inline"><b>&#8594</b></button>
+      <button id="nextChoice1" class="house dialogueChoice-button" type="button" onclick="backToChoices1()" display="none"><b>&#8594</b></button>
+      <button id="nextChoice2" class="house dialogueChoice-button" type="button" onclick="backToChoices2()" display="none"><b>&#8594</b></button>
 
-  <p id="map" style="visibility:visible"><b>Whiskers</b><br><br>Hi there! I'm Whiskers Fluffikins and this is my brother Mister Fluffikins.
-    We just moved here! Our great uncle's mother's daughter's second cousin twice removed recently passed and left us a plot of land. 
-    A friendly local already marked our map — see that red 'X'? That's where the land is. 
-    Unfortunately, all these one-way streets are giving us a headache. 
-    Could you please help us get there?</p>
+      <p id="map" style="visibility:visible"><b>Whiskers</b><br><br>Hi there! I'm Whiskers Fluffikins and this is my brother Mister Fluffikins.
+        We just moved here! Our great uncle's mother's daughter's second cousin twice removed recently passed and left us a plot of land. 
+        A friendly local already marked our map — see that red 'X'? That's where the land is. 
+        Unfortunately, all these one-way streets are giving us a headache. 
+        Could you please help us get there?</p>
 
-  <p id="house0" class="hiddenText">(You arrive at an empty plot of land with Whiskers and Mister Fluffikins.)</p>
-  <p id="house1" class="hiddenText"><b>Whiskers</b><br><br>Thank you so much for helping out! Can we get your help once more? See, we 
-    would really love to build our dream house here! This is what it looks like!</p>
-  <!-- show completed house model -->
+      <p id="house0" class="hiddenText">(You arrive at an empty plot of land with Whiskers and Mister Fluffikins.)</p>
+      <p id="house1" class="hiddenText"><b>Whiskers</b><br><br>Thank you so much for helping out! Can we get your help once more? See, we 
+        would really love to build our dream house here! This is what it looks like!</p>
+      <!-- show completed house model -->
 
-  <p id="house-choice1" class="hiddenText"><b>Whiskers</b><br><br>Could you help us build our house?</p><br><br>
-  <button id="choice1-1" class="hiddenText choice-button" type="button" onclick="choice1Response(this)">But I already helped you.</button>
-  <button id="choice1-2" class="hiddenText choice-button" type="button" onclick="changeText()">Absolutely!</button>
-  <button id="choice1-3" class="hiddenText choice-button" type="button" onclick="choice1Response(this)">I, uh, think I left the oven on.</button>
-  <p id="choice1-1-response" class="hiddenText"><b>Whiskers</b><br><br>Don't worry! We just need a third person to help guide us with 
-    the blueprint. We'll do all the heavy lifting, promise! Please help us?</p>
-  <!-- loop back to house-choice1 -->
-  <p id="choice1-3-response" class="hiddenText"><b>Mister</b><br><br>Hm? But weren't you already out and about when we ran into you?</p>
-  <!-- loop back to house-choice1 -->
+      <p id="house-choice1" class="hiddenText"><b>Whiskers</b><br><br>Could you help us build our house?</p><br><br>
+      <button id="choice1-1" class="hiddenText choice-button" type="button" onclick="choice1Response(this)">But I already helped you.</button>
+      <button id="choice1-2" class="hiddenText choice-button" type="button" onclick="changeText()">Absolutely!</button>
+      <button id="choice1-3" class="hiddenText choice-button" type="button" onclick="choice1Response(this)">I, uh, think I left the oven on.</button>
+      <p id="choice1-1-response" class="hiddenText"><b>Whiskers</b><br><br>Don't worry! We just need a third person to help guide us with 
+        the blueprint. We'll do all the heavy lifting, promise! Please help us?</p>
+      <!-- loop back to house-choice1 -->
+      <p id="choice1-3-response" class="hiddenText"><b>Mister</b><br><br>Hm? But weren't you already out and about when we ran into you?</p>
+      <!-- loop back to house-choice1 -->
 
-  <p id="house2" class="hiddenText"><b>Mister</b><br><br>This is the house blueprint. We already placed the front door for you. Whiskers 
-    says it should be purple.</p>
-  <!-- user places front door -->
-  <p id="house3" class="hiddenText"><b>Whiskers</b><br><br>Great! Now we need a back door. My brother insists that it must be black.</p>
-  <!-- user places back door -->
-  <p id="house4" class="hiddenText"><b>Mister</b><br><br>We'd also like a window that wraps around the side of the house.</p>
-  <!-- user places both window parts -->
-  <p id="house5" class="hiddenText"><b>Whiskers</b><br><br>Lovely! Just one last detail. Mister thinks this is just silly, but I think 
-    the house would look wonderful with some decorative painting. A large diagonal across one side of the house 
-    and up onto the roof should add a little character!</p>
-  <!-- user places decoration parts -->
-  <!-- blueprint is folded into finished house model -->
-  <p id="house6" class="hiddenText"><b>Mister</b><br><br>Done! Wait just a minute... look at our house! It's all mostly just one color!</p>
-  <p id="house7" class="hiddenText"><b>Whiskers</b><br><br>Fish sticks. You have that black back door, brother. And if I do say so
-    myself, it sure sticks out like a sore thumb! This is why I wanted it in lavendar.</p>
+      <p id="house2" class="hiddenText"><b>Mister</b><br><br>This is the house blueprint. We already placed the front door for you. Can you
+        believe Whiskers wants it to be purple?</p>
+      <!-- user places front door -->
+      <p id="house3" class="hiddenText"><b>Whiskers</b><br><br>To start with, we need a back door. My brother insists that it must be black.</p>
+      <!-- user places back door -->
+      <p id="house4" class="hiddenText"><b>Mister</b><br><br>We'd also like a window that wraps around the side of the house.</p>
+      <!-- user places both window parts -->
+      <p id="house5" class="hiddenText"><b>Whiskers</b><br><br>Lovely! Just one last detail. Mister thinks this is just silly, but I think 
+        the house would look wonderful with some decorative painting. A large diagonal across one side of the house 
+        and up onto the roof should add a little character!</p>
+      <!-- user places decoration parts -->
+      <!-- blueprint is folded into finished house model -->
+      <p id="house6" class="hiddenText"><b>Mister</b><br><br>Done! Wait just a minute... look at our house! It's all mostly just one color!</p>
+      <p id="house7" class="hiddenText"><b>Whiskers</b><br><br>Fish sticks. You have that black back door, brother. And if I do say so
+        myself, it sure sticks out like a sore thumb! This is why I wanted it in lavendar.</p>
 
-  <p id="house-choice2" class="hiddenText"><b>Whiskers and Mister</b><br><br>What do you think?</p><br><br>
-  <button id="choice2-1" class="hiddenText choice-button" type="button" onclick="choice2Response(this)">Mister is right, a house all in one color is weird!</button>
-  <button id="choice2-2" class="hiddenText choice-button" type="button" onclick="choice2Response(this)">Whiskers is right.</button>
-  <button id="choice2-3" class="hiddenText choice-button" type="button" onclick="changeText()">It doesn't have to be one or the other.</button>
-  <p id="choice2-1-response" class="hiddenText"><b>Mister</b><br><br>Exactly! Wait, but it's not all one color.</p>
-  <!-- loop back to house-choice2 -->
-  <p id="choice2-2-response" class="hiddenText"><b>Whiskers</b><br><br>Exactly! But why do you think I'm right?</p>
-  <!-- loop back to house-choice2 -->
+      <p id="house-choice2" class="hiddenText"><b>Whiskers and Mister</b><br><br>What do you think?</p><br><br>
+      <button id="choice2-1" class="hiddenText choice-button" type="button" onclick="choice2Response(this)">Mister is right, a house all in one color is weird!</button>
+      <button id="choice2-2" class="hiddenText choice-button" type="button" onclick="choice2Response(this)">Whiskers is right.</button>
+      <button id="choice2-3" class="hiddenText choice-button" type="button" onclick="changeText()">It doesn't have to be one or the other.</button>
+      <p id="choice2-1-response" class="hiddenText"><b>Mister</b><br><br>Exactly! Wait, but it's not all one color.</p>
+      <!-- loop back to house-choice2 -->
+      <p id="choice2-2-response" class="hiddenText"><b>Whiskers</b><br><br>Exactly! But why do you think I'm right?</p>
+      <!-- loop back to house-choice2 -->
 
-  <p id="house8" class="hiddenText"><b>Whiskers</b><br><br>I suppose you're right! We can always repaint.</p>
-  <p id="house9" class="hiddenText"><b>Mister</b><br><br>Well, I know I can't wait to furnish our house. I'm going to make 
-    my room sea-themed.</p>
-  <p id="house10" class="hiddenText"><b>Whiskers</b><br><br>I've always wanted a bird-themed room. And because we built this 
-    house together, it's even more special for me because I know that it's a product of both our hard work!</p>
-  <p id="house11" class="hiddenText"><b>Whiskers and Mister</b><br><br>And thank YOU, for helping us build our house and sorting out 
-    our sibling quarrels!</p>
-  
-  <br><p id="instr" class="hiddenText">(Interact with the finished house to find the feature that the Fluffikins 
-    want, then click on the blueprint where you think it should be placed. If it is correct, the wall will appear. 
-    Otherwise, try to place in another spot.)</p>
-</div>
+      <p id="house8" class="hiddenText"><b>Whiskers</b><br><br>I suppose you're right! We can always repaint.</p>
+      <p id="house9" class="hiddenText"><b>Mister</b><br><br>Well, I know I can't wait to furnish our house. I'm going to make 
+        my room sea-themed.</p>
+      <p id="house10" class="hiddenText"><b>Whiskers</b><br><br>I've always wanted a bird-themed room. And because we built this 
+        house together, it's even more special for me because I know that it's a product of both our hard work!</p>
+      <p id="house11" class="hiddenText"><b>Whiskers and Mister</b><br><br>And thank YOU, for helping us build our house and sorting out 
+        our sibling quarrels!</p>
+      
+      <p id="instr" class="hiddenText">(Interact with the finished house to find the feature that the Fluffikins 
+        want, then click on the blueprint where you think it should be placed. If it is correct, the wall will appear. 
+        Otherwise, try to place in another spot.)</p>
+    </div>
 
-<script>
-    function showHouse() {
-    for (const e of document.getElementsByClassName("house")) {
-      e.style.visibility="visible";
-    }
-    document.getElementById("nextChoice1").style.display = "none";
-    document.getElementById("nextChoice2").style.display = "none";
-    for (const e of document.getElementsByClassName("house-solution")) {
-      e.style.visibility="visible";
-    }
-    for (const e of document.getElementsByClassName("map")) {
-      e.style.display="none";
-    }
-  }
-  
-    function changeText() {
-      if(document.getElementById("map").style.visibility == "visible") {
-        document.getElementById("map").style.display = "none";
-        document.getElementById("map").style.visibility = "hidden";
-        document.getElementById("house0").style.display = "inline";
-      } else if (document.getElementById("house0").style.display == "inline") {
-        document.getElementById("house0").style.display = "none";
-        document.getElementById("house1").style.display = "inline";
-      } else if (document.getElementById("house1").style.display == "inline") {
-        document.getElementById("house1").style.display = "none";
-        document.getElementById("next").style.visibility = "hidden";
+    <script>
+        function showHouse() {
+        for (const e of document.getElementsByClassName("house")) {
+          e.style.visibility="visible";
+        }
+        document.getElementById("nextChoice1").style.display = "none";
+        document.getElementById("nextChoice2").style.display = "none";
+        for (const e of document.getElementsByClassName("house-solution")) {
+          e.style.visibility="visible";
+        }
+        for (const e of document.getElementsByClassName("map")) {
+          e.style.display="none";
+        }
+      }
+      
+        function changeText() {
+          if(document.getElementById("map").style.visibility == "visible") {
+            document.getElementById("map").style.display = "none";
+            document.getElementById("map").style.visibility = "hidden";
+            document.getElementById("house0").style.display = "inline";
+          } else if (document.getElementById("house0").style.display == "inline") {
+            document.getElementById("house0").style.display = "none";
+            document.getElementById("house1").style.display = "inline";
+          } else if (document.getElementById("house1").style.display == "inline") {
+            document.getElementById("next").style.visibility = "hidden";
+            document.getElementById("house1").style.display = "none";
+            document.getElementById("house-choice1").style.display = "inline";
+            document.getElementById("choice1-1").style.display = "block";
+            document.getElementById("choice1-2").style.display = "block";
+            document.getElementById("choice1-3").style.display = "block";
+          } else if (document.getElementById("house-choice1").style.display == "inline") {
+            document.getElementById("house-choice1").style.display = "none";
+            document.getElementById("choice1-1").style.display = "none";
+            document.getElementById("choice1-2").style.display = "none";
+            document.getElementById("choice1-3").style.display = "none";
+            document.getElementById("house2").style.display = "inline";
+            document.getElementById("next").style.visibility = "visible";
+          } else if (document.getElementById("house2").style.display == "inline") {
+            document.getElementById("house2").style.display = "none";
+            document.getElementById("house3").style.display = "inline";
+            document.getElementById("instr").style.display = "block";
+          } else if (document.getElementById("house3").style.display == "inline") {
+            document.getElementById("house3").style.display = "none";
+            document.getElementById("house4").style.display = "inline";
+          } else if (document.getElementById("house4").style.display == "inline") {
+            document.getElementById("house4").style.display = "none";
+            document.getElementById("house5").style.display = "inline";
+          } else if (document.getElementById("house5").style.display == "inline") {
+            document.getElementById("house5").style.display = "none";
+            document.getElementById("instr").style.display = "none";
+            document.getElementById("house6").style.display = "inline";
+          } else if (document.getElementById("house6").style.display == "inline") {
+            document.getElementById("house6").style.display = "none";
+            document.getElementById("house7").style.display = "inline";
+          } else if (document.getElementById("house7").style.display == "inline") {
+            document.getElementById("next").style.visibility = "hidden";
+            document.getElementById("house7").style.display = "none";
+            document.getElementById("house-choice2").style.display = "inline";
+            document.getElementById("choice2-1").style.display = "block";
+            document.getElementById("choice2-2").style.display = "block";
+            document.getElementById("choice2-3").style.display = "block";
+          } else if (document.getElementById("house-choice2").style.display == "inline") {
+            document.getElementById("house-choice2").style.display = "none";
+            document.getElementById("choice2-1").style.display = "none";
+            document.getElementById("choice2-2").style.display = "none";
+            document.getElementById("choice2-3").style.display = "none";
+            document.getElementById("house8").style.display = "inline";
+            document.getElementById("next").style.visibility = "visible";
+          } else if (document.getElementById("house8").style.display == "inline") {
+            document.getElementById("house8").style.display = "none";
+            document.getElementById("house9").style.display = "inline";
+          } else if (document.getElementById("house9").style.display == "inline") {
+            document.getElementById("house9").style.display = "none";
+            document.getElementById("house10").style.display = "inline";
+          } else if (document.getElementById("house10").style.display == "inline") {
+            document.getElementById("house10").style.display = "none";
+            document.getElementById("next").style.display = "none";
+            document.getElementById("house11").style.display = "inline";
+          }
+        }
+
+      function choice1Response(obj) {
+        if (obj.id == "choice1-1") {
+          document.getElementById("house-choice1").style.display = "none";
+          document.getElementById("choice1-1").style.display = "none";
+          document.getElementById("choice1-2").style.display = "none";
+          document.getElementById("choice1-3").style.display = "none";
+          document.getElementById("next").style.display = "none";
+          document.getElementById("choice1-1-response").style.display = "inline";
+          document.getElementById("nextChoice1").style.display = "inline";
+        } else if (obj.id == "choice1-3") {
+          document.getElementById("house-choice1").style.display = "none";
+          document.getElementById("choice1-1").style.display = "none";
+          document.getElementById("choice1-2").style.display = "none";
+          document.getElementById("choice1-3").style.display = "none";
+          document.getElementById("next").style.display = "none";
+          document.getElementById("choice1-3-response").style.display = "inline";
+          document.getElementById("nextChoice1").style.display = "inline";
+        } else {
+          changeText();
+        }
+      }
+
+      function backToChoices1() {
+        for (const e of document.getElementsByClassName("hiddenText")) {
+          e.style.display = "none";
+        }
+        document.getElementById("nextChoice1").style.display = "none";
         document.getElementById("house-choice1").style.display = "inline";
         document.getElementById("choice1-1").style.display = "block";
         document.getElementById("choice1-2").style.display = "block";
         document.getElementById("choice1-3").style.display = "block";
-      } else if (document.getElementById("house-choice1").style.display == "inline") {
-        document.getElementById("house-choice1").style.display = "none";
-        document.getElementById("choice1-1").style.display = "none";
-        document.getElementById("choice1-2").style.display = "none";
-        document.getElementById("choice1-3").style.display = "none";
-        document.getElementById("house2").style.display = "inline";
-        document.getElementById("next").style.visibility = "visible";
-        document.getElementById("instr").style.display = "block";
-      } else if (document.getElementById("house2").style.display == "inline") {
-        document.getElementById("house2").style.display = "none";
-        document.getElementById("house3").style.display = "inline";
-      } else if (document.getElementById("house3").style.display == "inline") {
-        document.getElementById("house3").style.display = "none";
-        document.getElementById("house4").style.display = "inline";
-      } else if (document.getElementById("house4").style.display == "inline") {
-        document.getElementById("house4").style.display = "none";
-        document.getElementById("house5").style.display = "inline";
-      } else if (document.getElementById("house5").style.display == "inline") {
-        document.getElementById("house5").style.display = "none";
-        document.getElementById("instr").style.display = "none";
-        document.getElementById("house6").style.display = "inline";
-      } else if (document.getElementById("house6").style.display == "inline") {
-        document.getElementById("house6").style.display = "none";
-        document.getElementById("house7").style.display = "inline";
-      } else if (document.getElementById("house7").style.display == "inline") {
-        document.getElementById("house7").style.display = "none";
-        document.getElementById("next").style.visibility = "hidden";
+        document.getElementById("next").style.display = "inline";
+      }
+
+      function choice2Response(obj) {
+        if (obj.id == "choice2-1") {
+          document.getElementById("house-choice2").style.display = "none";
+          document.getElementById("choice2-1").style.display = "none";
+          document.getElementById("choice2-2").style.display = "none";
+          document.getElementById("choice2-3").style.display = "none";
+          document.getElementById("next").style.display = "none";
+          document.getElementById("choice2-1-response").style.display = "inline";
+          document.getElementById("nextChoice2").style.display = "inline";
+        } else if (obj.id == "choice2-2") {
+          document.getElementById("house-choice2").style.display = "none";
+          document.getElementById("choice2-1").style.display = "none";
+          document.getElementById("choice2-2").style.display = "none";
+          document.getElementById("choice2-3").style.display = "none";
+          document.getElementById("next").style.display = "none";
+          document.getElementById("choice2-2-response").style.display = "inline";
+          document.getElementById("nextChoice2").style.display = "inline";
+        } else {
+          changeText();
+        }
+      }
+
+      function backToChoices2() {
+        for (const e of document.getElementsByClassName("hiddenText")) {
+          e.style.display = "none";
+        }
+        document.getElementById("nextChoice2").style.display = "none";
         document.getElementById("house-choice2").style.display = "inline";
         document.getElementById("choice2-1").style.display = "block";
         document.getElementById("choice2-2").style.display = "block";
         document.getElementById("choice2-3").style.display = "block";
-      } else if (document.getElementById("house-choice2").style.display == "inline") {
-        document.getElementById("house-choice2").style.display = "none";
-        document.getElementById("choice2-1").style.display = "none";
-        document.getElementById("choice2-2").style.display = "none";
-        document.getElementById("choice2-3").style.display = "none";
-        document.getElementById("house8").style.display = "inline";
-        document.getElementById("next").style.visibility = "visible";
-      } else if (document.getElementById("house8").style.display == "inline") {
-        document.getElementById("house8").style.display = "none";
-        document.getElementById("house9").style.display = "inline";
-      } else if (document.getElementById("house9").style.display == "inline") {
-        document.getElementById("house9").style.display = "none";
-        document.getElementById("house10").style.display = "inline";
-      } else if (document.getElementById("house10").style.display == "inline") {
-        document.getElementById("house10").style.display = "none";
-        document.getElementById("next").style.display = "none";
-        document.getElementById("house11").style.display = "inline";
-      }
-    }
-
-  function choice1Response(obj) {
-    if (obj.id == "choice1-1") {
-      document.getElementById("house-choice1").style.display = "none";
-      document.getElementById("choice1-1").style.display = "none";
-      document.getElementById("choice1-2").style.display = "none";
-      document.getElementById("choice1-3").style.display = "none";
-      document.getElementById("next").style.display = "none";
-      document.getElementById("choice1-1-response").style.display = "inline";
-      document.getElementById("nextChoice1").style.display = "inline";
-    } else if (obj.id == "choice1-3") {
-      document.getElementById("house-choice1").style.display = "none";
-      document.getElementById("choice1-1").style.display = "none";
-      document.getElementById("choice1-2").style.display = "none";
-      document.getElementById("choice1-3").style.display = "none";
-      document.getElementById("next").style.display = "none";
-      document.getElementById("choice1-3-response").style.display = "inline";
-      document.getElementById("nextChoice1").style.display = "inline";
-    } else {
-      changeText();
-    }
-  }
-
-  function backToChoices1() {
-    for (const e of document.getElementsByClassName("hiddenText")) {
-      e.style.display = "none";
-    }
-    document.getElementById("nextChoice1").style.display = "none";
-    document.getElementById("house-choice1").style.display = "inline";
-    document.getElementById("choice1-1").style.display = "block";
-    document.getElementById("choice1-2").style.display = "block";
-    document.getElementById("choice1-3").style.display = "block";
-    document.getElementById("next").style.display = "inline";
-  }
-
-  function choice2Response(obj) {
-    if (obj.id == "choice2-1") {
-      document.getElementById("house-choice2").style.display = "none";
-      document.getElementById("choice2-1").style.display = "none";
-      document.getElementById("choice2-2").style.display = "none";
-      document.getElementById("choice2-3").style.display = "none";
-      document.getElementById("next").style.display = "none";
-      document.getElementById("choice2-1-response").style.display = "inline";
-      document.getElementById("nextChoice2").style.display = "inline";
-    } else if (obj.id == "choice2-2") {
-      document.getElementById("house-choice2").style.display = "none";
-      document.getElementById("choice2-1").style.display = "none";
-      document.getElementById("choice2-2").style.display = "none";
-      document.getElementById("choice2-3").style.display = "none";
-      document.getElementById("next").style.display = "none";
-      document.getElementById("choice2-2-response").style.display = "inline";
-      document.getElementById("nextChoice2").style.display = "inline";
-    } else {
-      changeText();
-    }
-  }
-
-  function backToChoices2() {
-    for (const e of document.getElementsByClassName("hiddenText")) {
-      e.style.display = "none";
-    }
-    document.getElementById("nextChoice2").style.display = "none";
-    document.getElementById("house-choice2").style.display = "inline";
-    document.getElementById("choice2-1").style.display = "block";
-    document.getElementById("choice2-2").style.display = "block";
-    document.getElementById("choice2-3").style.display = "block";
-    document.getElementById("next").style.display = "inline";
-  }
-</script>
-    <script>
-      function showHouse() {
-        for (const e of document.getElementsByClassName("house")) {
-          e.style.visibility="visible";
-        }
-        for (const e of document.getElementsByClassName("map")) {
-          e.style.visibility="hidden";
-        }
+        document.getElementById("next").style.display = "inline";
       }
     </script>
 
