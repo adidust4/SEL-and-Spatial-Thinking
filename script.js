@@ -1,3 +1,13 @@
+/** Description: Functionality of spatial thinking project. Including rotating the 3d 
+ * house, selecting walls, text changes, and map selection logic.
+ * 
+ * Authors: A'di Dust and Abigail Gunther
+ * Date: 04/27/2023
+ */
+
+
+// Allows user to rotate the 3D house by dragging the object.
+// Adapted from: https://codepen.io/djcesar/pen/EmwKQV
 AFRAME.registerComponent('drag-rotate-component',{
     schema : { speed : {default:3}},
     init : function(){
@@ -36,6 +46,7 @@ AFRAME.registerComponent('drag-rotate-component',{
     }
   });
 
+// Variables to update 
 var index = 0;
 var backClicked = false;
 var rightClicked = false;
@@ -43,20 +54,20 @@ var leftClicked = false;
 var topClicked = false;
 var blankClicked = false;
 
+// replace components of 2D house if clicked and allow text change
 AFRAME.registerComponent('click-to-replace', {
     init : function(){
-        const modelList = ["#back", "#right", "#left", "#top", "#blank"];
+        const modelList = ["#back", "#right", "#left", "#top", "#blank"]; // ids for aframe entities
         this.el.addEventListener("click", function(e) {
           var selected = '#'.concat(e.target.getAttribute('id'));
-          console.log("clicked")
           if(selected == (modelList[index].concat("-house"))){
+            // change to correct model on click
             e.target.removeAttribute('gltf-model');
             e.target.setAttribute('gltf-model', modelList[index]);
             index = (index + 1) % 5;
-            console.log(index)
+            // allow text to change in instruction block
             if(index == 1){
               backClicked = true;
-              console.log(backClicked)
             } 
             else if (index == 2){
               rightClicked = true;
@@ -76,6 +87,7 @@ AFRAME.registerComponent('click-to-replace', {
 })
 
 
+// after map make house div visible
 function showHouse() {
   for (const e of document.getElementsByClassName("house")) {
     e.style.visibility="visible";
@@ -89,6 +101,7 @@ function showHouse() {
     e.style.display="none";
   }
 }
+
 
   function changeText() {
     console.log(backClicked)
@@ -225,6 +238,7 @@ function backToChoices2() {
   document.getElementById("next").style.display = "inline";
 }
 
+// variables for columns of map areas. 0-0 translates to zerozero, etc
 var zerozero = document.getElementsByTagName('0-0')
 var zeroone = document.getElementsByTagName('0-1')
 var zerotwo = document.getElementsByTagName('0-2')
@@ -242,6 +256,7 @@ var threeone = document.getElementsByTagName('3-1')
 var threetwo = document.getElementsByTagName('3-2')
 var threethree = document.getElementsByTagName('3-3')
 
+// variables for rows of map areas. 00 translates to zz, etc
 var zz = document.getElementsByTagName('00')
 var zo = document.getElementsByTagName('01')
 var zt = document.getElementsByTagName('02')

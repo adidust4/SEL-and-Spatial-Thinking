@@ -1,17 +1,30 @@
+ <!-- 
+  Description: Basic setup for website outline. Includes map, text, and 3d house.
+ 
+ Authors: A'di Dust and Abigail Gunther
+ Date: 04/27/2023 
+-->
+
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>House</title>
     <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
+
   <body class="background">
     <script src="script.js"></script>
 
+    <!-- Map area of screen including image map -->
     <div class="map map-container">
       <img src="Assets/map.jpg" width="500px" height="500px" usemap="#map-image">
-
+      <!-- Areas are defined at follows:
+              Columns- title is in form x-y where 0-0 is the top left and 3-3 is bottom right
+              Rows- title is in form xy where 00 is top left and 22 is bottom right
+      -->
       <map name="map-image">
         <area alt="0-0" title="0-0" href="#" coords="30,0,62,140" shape="rect">
         <area alt="1-0" title="1-0" href="#" coords="165,0,195,140" shape="rect">
@@ -41,22 +54,26 @@
       </map>
     </div>
 
+    <!-- Button to change from 2d to 3d house -->
     <button id="button" class="house solution-button">View Completed House</button>
 
+    <!-- Part of creen including aframe house -->
     <div class="house box-construct">
-      <!-- <button id="button" class="solution-button">View Completed House</button> -->
 
       <a-scene embedded>
         <a-assets>
+          <!-- faces of 2d house -->
           <a-asset-item id="blank" src="Assets/blank.glb"></a-asset-item>
           <a-asset-item id="front" src="Assets/front.glb"></a-asset-item>
           <a-asset-item id="back" src="Assets/back.glb"></a-asset-item>
           <a-asset-item id="left" src="Assets/left.glb"></a-asset-item>
           <a-asset-item id="right" src="Assets/right.glb"></a-asset-item>
           <a-asset-item id="top" src="Assets/top.glb"></a-asset-item>
+          <!-- solution 3d house -->
           <a-asset-item id="solution" src="Assets/solution.glb"></a-asset-item>
         </a-assets>
 
+        <!-- 3d solution house -->
         <a-entity id="solution-house" gltf-model="#solution" position="0 1.8 -1.5" drag-rotate-component visible="false"></a-entity>
         <!-- Original 2d house -->
         <a-entity click-to-replace id="back-house" gltf-model="#blank" position="0 2.35 -1.5" rotation="0 0 0" visible="true"></a-entity>
@@ -70,6 +87,8 @@
         <a-camera position="0 0 0" look-controls="enabled:false"></a-camera>
 
       </a-scene>
+
+      <!-- Script to change between 2D and 3D house on click -->
       <script type="text/javascript">
         document.getElementById("button").addEventListener("click", () => {
           isHidden= document.getElementById("solution-house").getAttribute('visible') == true;
@@ -91,6 +110,7 @@
       </script>
     </div>
 
+    <!-- All tages involving instruction and interaction text changes -->
     <div class="textbox">
       <button class="map go-button" type="button" onclick="showHouse(); changeText()"><b>Go</b></button>
       <button id="next" class="house dialogue-button" type="button" onclick="changeText()" display="inline"><b>&#8594</b></button>
