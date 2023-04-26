@@ -224,3 +224,31 @@ function backToChoices2() {
   document.getElementById("choice2-3").style.display = "block";
   document.getElementById("next").style.display = "inline";
 }
+
+var zerozero = document.getElementsByTagName('0-0')
+var zeroone = document.getElementsByTagName('0-1')
+var zerotwo = document.getElementsByTagName('0-2')
+var zerothree = document.getElementsByTagName('0-3')
+var onezero = document.getElementsByTagName('1-0')
+var oneone = document.getElementsByTagName('1-1')
+var onetwo = document.getElementsByTagName('1-2')
+var onethree = document.getElementsByTagName('1-3')
+var twozero = document.getElementsByTagName('2-0')
+var twoone = document.getElementsByTagName('2-1')
+var twotwo = document.getElementsByTagName('2-2')
+var twothree = document.getElementsByTagName('2-3')
+var threezero = document.getElementsByTagName('3-0')
+var threeone = document.getElementsByTagName('3-1')
+var threetwo = document.getElementsByTagName('3-2')
+var threethree = document.getElementsByTagName('3-3')
+
+var zz = document.getElementsByTagName('00')
+var zo = document.getElementsByTagName('01')
+var zt = document.getElementsByTagName('02')
+var oz = document.getElementsByTagName('10')
+var oo = document.getElementsByTagName('11')
+var ot = document.getElementsByTagName('12')
+var tz = document.getElementsByTagName('20')
+var to = document.getElementsByTagName('21')
+var tt = document.getElementsByTagName('22')
+
