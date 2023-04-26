@@ -15,8 +15,8 @@
 }
 
 .map-image {
-    width: 5in;
-    height: 5.5in;
+    width: 500px;
+    height: 500px;
     position: absolute;
     object-fit: contain;
     padding-top: 1%;
