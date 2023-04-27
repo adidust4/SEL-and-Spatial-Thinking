@@ -102,7 +102,10 @@ function showHouse() {
   }
 }
 
-
+/**
+ * Changes the text for the main dialogue; text is changed in a linear fashion and cannot be 
+ * changed back to a previous text.
+ */
   function changeText() {
     console.log(backClicked)
     if(document.getElementById("map").style.visibility == "visible") {
@@ -170,6 +173,11 @@ function showHouse() {
     }
   }
 
+  /**
+   * Depending on the user's selection, displays a response and allows the user 
+   * to loop back to the choice options of the FIRST prompt. 
+   * @param obj - the selected response
+   */
 function choice1Response(obj) {
   if (obj.id == "choice1-1") {
     document.getElementById("house-choice1").style.display = "none";
@@ -192,6 +200,9 @@ function choice1Response(obj) {
   }
 }
 
+/**
+ * Hides all main text elements and displays the first prompt and set of user choices.
+ */
 function backToChoices1() {
   for (const e of document.getElementsByClassName("hiddenText")) {
     e.style.display = "none";
@@ -204,6 +215,11 @@ function backToChoices1() {
   document.getElementById("next").style.display = "inline";
 }
 
+  /**
+   * Depending on the user's selection, displays a response and allows the user 
+   * to loop back to the choice options of the SECOND prompt. 
+   * @param obj - the selected response
+   */
 function choice2Response(obj) {
   if (obj.id == "choice2-1") {
     document.getElementById("house-choice2").style.display = "none";
@@ -226,6 +242,9 @@ function choice2Response(obj) {
   }
 }
 
+  /**
+   * Hides all main text elements and displays the second prompt and set of user choices.
+   */
 function backToChoices2() {
   for (const e of document.getElementsByClassName("hiddenText")) {
     e.style.display = "none";
