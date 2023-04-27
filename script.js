@@ -68,6 +68,7 @@ AFRAME.registerComponent('click-to-replace', {
             // allow text to change in instruction block
             if(index == 1){
               backClicked = true;
+              // document.getElementById("next").removeAttribute("disabled");
             } 
             else if (index == 2){
               rightClicked = true;
@@ -116,12 +117,12 @@ function showHouse() {
       document.getElementById("house0").style.display = "none";
       document.getElementById("house1").style.display = "inline";
     } else if (document.getElementById("house1").style.display == "inline") {
-      document.getElementById("next").style.visibility = "hidden";
       document.getElementById("house1").style.display = "none";
       document.getElementById("house-choice1").style.display = "inline";
       document.getElementById("choice1-1").style.display = "block";
       document.getElementById("choice1-2").style.display = "block";
       document.getElementById("choice1-3").style.display = "block";
+      document.getElementById("next").style.visibility = "hidden";
     } else if (document.getElementById("house-choice1").style.display == "inline") {
       document.getElementById("house-choice1").style.display = "none";
       document.getElementById("choice1-1").style.display = "none";
@@ -133,6 +134,7 @@ function showHouse() {
       document.getElementById("house2").style.display = "none";
       document.getElementById("house3").style.display = "inline";
       document.getElementById("instr").style.display = "block";
+      // document.getElementById("next").setAttribute("disabled, true");
     } else if (document.getElementById("house3").style.display == "inline"  && (backClicked)) {
       document.getElementById("house3").style.display = "none";
       document.getElementById("house4").style.display = "inline";
@@ -286,3 +288,6 @@ var tz = document.getElementsByTagName('20')
 var to = document.getElementsByTagName('21')
 var tt = document.getElementsByTagName('22')
 
+function showTest() {
+  document.getElementById("testSelection").visibility = "visible";
+}

@@ -20,13 +20,14 @@
 
     <!-- Map area of screen including image map -->
     <div class="map map-container">
-      <img src="Assets/map.jpg" width="500px" height="500px" usemap="#map-image">
+      <img src="Assets/map.jpg" alt="map of the town" class="map-image" usemap="#map-image">
       <!-- Areas are defined at follows:
               Columns- title is in form x-y where 0-0 is the top left and 3-3 is bottom right
               Rows- title is in form xy where 00 is top left and 22 is bottom right
       -->
       <map name="map-image">
-        <area alt="0-0" title="0-0" href="#" coords="30,0,62,140" shape="rect">
+        <!-- TODO: ADJUST COORDS (+500 and some) -->
+        <area alt="0-0" title="0-0" href="#" coords="530,0,562,140" shape="rect">
         <area alt="1-0" title="1-0" href="#" coords="165,0,195,140" shape="rect">
         <area alt="2-0" title="2-0" href="#" coords="305,0,340,140" shape="rect">
         <area alt="3-0" title="3-0" href="#" coords="435,0,470,140" shape="rect">
@@ -52,6 +53,8 @@
         <area alt="12" title="12" href="#" coords="165,410,335,440" shape="rect">
         <area alt="22" title="22" href="#" coords="335,410,440,440" shape="rect">
       </map>
+
+      <!-- <div id="testSelection" class="test"></div> -->
     </div>
 
     <!-- Button to change from 2d to 3d house -->

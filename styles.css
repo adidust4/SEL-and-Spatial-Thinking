@@ -20,7 +20,16 @@
     position: absolute;
     object-fit: contain;
     padding-top: 1%;
-    padding-left: 32%;
+    padding-left: 500px;
+}
+
+.test {
+    /* visibility: hidden; */
+    position: relative;
+    width: 32px;
+    height: 140px;
+    left: 530px;
+    background-color: rgba(0,0,255,0.5);
 }
 
 .box-construct{
