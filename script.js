@@ -87,6 +87,18 @@ AFRAME.registerComponent('click-to-replace', {
     })}
 })
 
+// After welcome screen, make map div visible
+function showMap() {
+  for (const e of document.getElementsByClassName("welcome")) {
+    e.style.display = "none";
+  }
+  for (const e of document.getElementsByClassName("map")) {
+    e.style.visibility = "visible";
+  }
+  for (const e of document.getElementsByClassName("textbox")) {
+    e.style.display = "block";
+  }
+}
 
 // after map make house div visible
 function showHouse() {
@@ -95,9 +107,6 @@ function showHouse() {
   }
   document.getElementById("nextChoice1").style.display = "none";
   document.getElementById("nextChoice2").style.display = "none";
-  for (const e of document.getElementsByClassName("house-solution")) {
-    e.style.visibility="visible";
-  }
   for (const e of document.getElementsByClassName("map")) {
     e.style.display="none";
   }

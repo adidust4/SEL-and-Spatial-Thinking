@@ -18,6 +18,18 @@
   <body class="background">
     <script src="script.js"></script>
 
+    <div class="welcome">
+      <h1><!-- TODO: replace [title] with actual title -->Welcome to [TITLE]!</h1>
+      <p>This is a project meant to serve as a tool to promote and encourage 
+      spatial thinking and social-emotional learning (SEL) in an online learning environment. 
+      While the following activities were created by us and are not necessarily approved spatial 
+      thinking and SEL curricula, they were based on existing activities used in other curricula. 
+      We hope this can serve as a foundation for further strengthening students' skills and interest 
+      in these areas. Enjoy!</p>
+      
+      <button class="start-button" type="button" onclick="showMap()"><b>Start</b></button>
+    </div>
+
     <!-- Map area of screen including image map -->
     <div class="map map-container">
       <img src="Assets/map.jpg" alt="map of the town" class="map-image" usemap="#map-image">
@@ -26,8 +38,7 @@
               Rows- title is in form xy where 00 is top left and 22 is bottom right
       -->
       <map name="map-image">
-        <!-- TODO: ADJUST COORDS (+500 and some) -->
-        <area alt="0-0" title="0-0" href="#" coords="530,0,562,140" shape="rect">
+        <area alt="0-0" title="0-0" href="#" coords="30,0,62,140" onclick="showTest()" shape="rect">
         <area alt="1-0" title="1-0" href="#" coords="165,0,195,140" shape="rect">
         <area alt="2-0" title="2-0" href="#" coords="305,0,340,140" shape="rect">
         <area alt="3-0" title="3-0" href="#" coords="435,0,470,140" shape="rect">
@@ -54,8 +65,9 @@
         <area alt="22" title="22" href="#" coords="335,410,440,440" shape="rect">
       </map>
 
-      <!-- <div id="testSelection" class="test"></div> -->
+      <div id="testSelection" class="test"></div>
     </div>
+
 
     <!-- Button to change from 2d to 3d house -->
     <button id="button" class="house solution-button">View Completed House</button>
@@ -115,7 +127,7 @@
 
     <!-- All tags involving instruction and interaction text changes -->
     <div class="textbox">
-      <button class="map go-button" type="button" onclick="showHouse(); changeText()"><b>Go</b></button>
+      <button class="map dialogue-button" type="button" onclick="showHouse(); changeText()"><b>&#8594</b></button>
       <button id="next" class="house dialogue-button" type="button" onclick="changeText()" display="inline"><b>&#8594</b></button>
       <button id="nextChoice1" class="house dialogueChoice-button" type="button" onclick="backToChoices1()" display="none"><b>&#8594</b></button>
       <button id="nextChoice2" class="house dialogueChoice-button" type="button" onclick="backToChoices2()" display="none"><b>&#8594</b></button>
