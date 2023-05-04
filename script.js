@@ -68,7 +68,6 @@ AFRAME.registerComponent('click-to-replace', {
             // allow text to change in instruction block
             if(index == 1){
               backClicked = true;
-              // document.getElementById("next").removeAttribute("disabled");
             } 
             else if (index == 2){
               rightClicked = true;
