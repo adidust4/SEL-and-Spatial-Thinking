@@ -65,6 +65,23 @@ AFRAME.registerComponent('click-to-replace', {
             e.target.removeAttribute('gltf-model');
             e.target.setAttribute('gltf-model', modelList[index]);
             index = (index + 1) % 5;
+            // allow text to change in instruction block
+            if(index == 1){
+              backClicked = true;
+              // document.getElementById("next").removeAttribute("disabled");
+            } 
+            else if (index == 2){
+              rightClicked = true;
+            }
+            else if (index == 3){
+              leftClicked = true;
+            }
+            else if (index == 4){
+              topClicked = true;
+            }
+            else{
+              blank = true;
+            }
           };
 
     })}
@@ -127,13 +144,13 @@ function showHouse() {
       document.getElementById("house3").style.display = "inline";
       document.getElementById("instr").style.display = "block";
       // document.getElementById("next").setAttribute("disabled, true");
-    } else if (document.getElementById("house3").style.display == "inline") {
+    } else if (document.getElementById("house3").style.display == "inline"  && (backClicked)) {
       document.getElementById("house3").style.display = "none";
       document.getElementById("house4").style.display = "inline";
-    } else if (document.getElementById("house4").style.display == "inline") {
+    } else if (document.getElementById("house4").style.display == "inline" && (rightClicked)) {
       document.getElementById("house4").style.display = "none";
       document.getElementById("house5").style.display = "inline";
-    } else if (document.getElementById("house5").style.display == "inline") {
+    } else if (document.getElementById("house5").style.display == "inline" && (leftClicked)) {
       document.getElementById("house5").style.display = "none";
       document.getElementById("instr").style.display = "none";
       document.getElementById("house6").style.display = "inline";
