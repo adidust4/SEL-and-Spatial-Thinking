@@ -20,12 +20,11 @@
 
     <div class="welcome">
       <h1>Welcome to "Not a House but a Home"!</h1>
-      <p>This is a project meant to serve as a tool to promote and encourage 
-      spatial thinking and social-emotional learning (SEL) in an online learning environment. 
-      While the following activities were created by us and are not necessarily approved spatial 
-      thinking and SEL curricula, they were based on existing activities used in other curricula. 
-      We hope this can serve as a foundation for further strengthening students' skills and interest 
-      in these areas. Enjoy!</p>
+      <p>This is a project meant to serve as a tool to promote and encourage spatial thinking 
+      and social-emotional learning (SEL) in an online learning environment. While the following 
+      activities were created by us and are not necessarily approved spatial thinking and SEL 
+      curricula, they were based on existing activities. We hope this can serve as a foundation 
+      for further strengthening students' skills and interest in these areas. Enjoy!</p>
       
       <button class="start-button" type="button" onclick="showMap()"><b>Start</b></button>
     </div>
@@ -37,7 +36,7 @@
               Columns- title is in form x-y where 0-0 is the top left and 3-3 is bottom right
               Rows- title is in form xy where 00 is top left and 22 is bottom right
       -->
-      <map name="map-image">
+      <!-- <map name="map-image">
         <area alt="0-0" title="0-0" href="#" coords="30,0,62,140" onclick="showTest()" shape="rect">
         <area alt="1-0" title="1-0" href="#" coords="165,0,195,140" shape="rect">
         <area alt="2-0" title="2-0" href="#" coords="305,0,340,140" shape="rect">
@@ -63,9 +62,9 @@
         <area alt="02" title="02" href="#" coords="30,410,165,440" shape="rect">
         <area alt="12" title="12" href="#" coords="165,410,335,440" shape="rect">
         <area alt="22" title="22" href="#" coords="335,410,440,440" shape="rect">
-      </map>
+      </map> -->
 
-      <div id="testSelection" class="test"></div>
+      <!-- <div id="testSelection" class="test"></div> -->
     </div>
 
 
@@ -129,6 +128,7 @@
     <div class="textbox">
       <button class="map dialogue-button" type="button" onclick="showHouse(); changeText()"><b>&#8594</b></button>
       <button id="next" class="house dialogue-button" type="button" onclick="changeText()" display="inline"><b>&#8594</b></button>
+      <button id="previous" class="house dialogue-button" type="button" onclick="changeTextBack()" display="none"><b>&#8592</b></button>
       <button id="nextChoice1" class="house dialogueChoice-button" type="button" onclick="backToChoices1()" display="none"><b>&#8594</b></button>
       <button id="nextChoice2" class="house dialogueChoice-button" type="button" onclick="backToChoices2()" display="none"><b>&#8594</b></button>
 
@@ -145,9 +145,9 @@
       <!-- show completed house model -->
 
       <p id="house-choice1" class="hiddenText"><b>Whiskers</b><br><br>Could you help us build our house?</p><br><br>
-      <button id="choice1-1" class="hiddenText choice-button" type="button" onclick="choice1Response(this)">But I already helped you.</button>
-      <button id="choice1-2" class="hiddenText choice-button" type="button" onclick="changeText()">Absolutely!</button>
-      <button id="choice1-3" class="hiddenText choice-button" type="button" onclick="choice1Response(this)">I, uh, think I left the oven on.</button>
+      <button id="choice1-1" class="hiddenText user-choice-button" type="button" onclick="choice1Response(this)">But I already helped you.</button>
+      <button id="choice1-2" class="hiddenText user-choice-button" type="button" onclick="changeText()">Absolutely!</button>
+      <button id="choice1-3" class="hiddenText user-choice-button" type="button" onclick="choice1Response(this)">I, uh, think I left the oven on.</button>
       <p id="choice1-1-response" class="hiddenText"><b>Whiskers</b><br><br>Don't worry! We just need a third person to help guide us with 
         the blueprint. We'll do all the heavy lifting, promise! Please help us?</p>
       <!-- loop back to house-choice1 -->
@@ -170,9 +170,9 @@
         myself, it sure sticks out like a sore thumb! This is why I wanted it in lavendar.</p>
 
       <p id="house-choice2" class="hiddenText"><b>Whiskers and Mister</b><br><br>What do you think?</p><br><br>
-      <button id="choice2-1" class="hiddenText choice-button" type="button" onclick="choice2Response(this)">Mister is right, a house all in one color is weird!</button>
-      <button id="choice2-2" class="hiddenText choice-button" type="button" onclick="choice2Response(this)">Whiskers is right.</button>
-      <button id="choice2-3" class="hiddenText choice-button" type="button" onclick="changeText()">It doesn't have to be one or the other.</button>
+      <button id="choice2-1" class="hiddenText user-choice-button" type="button" onclick="choice2Response(this)">Mister is right, a house all in one color is weird!</button>
+      <button id="choice2-2" class="hiddenText user-choice-button" type="button" onclick="choice2Response(this)">Whiskers is right.</button>
+      <button id="choice2-3" class="hiddenText user-choice-button" type="button" onclick="changeText()">It doesn't have to be one or the other.</button>
       <p id="choice2-1-response" class="hiddenText"><b>Mister</b><br><br>Exactly! Wait, but it's not all one color.</p>
       <!-- loop back to house-choice2 -->
       <p id="choice2-2-response" class="hiddenText"><b>Whiskers</b><br><br>Exactly! But why do you think I'm right?</p>
@@ -186,9 +186,10 @@
       <p id="house11" class="hiddenText"><b>Whiskers and Mister</b><br><br>And thank YOU, for helping us build our house and sorting out 
         our sibling quarrels!</p>
       
-      <p id="instr" class="hiddenText">(Interact with the completed house to find the feature that the Fluffikins 
-        want, then click on the blueprint where you think it should be placed. If it is correct, the wall will appear. 
-        Otherwise, try to place in another spot.)</p>
+      <p id="instr" class="hiddenText">(Click on "View Completed House" to see the finished model. Interact with the 
+        completed house to find the feature that the Fluffikins want, then click on "Continue Placing Pieces" to 
+        return to the blueprint. Click where you think the feature should be placed. If it is correct, the wall will 
+        appear. Otherwise, try to place in another spot.)</p>
     </div>
 
   </body>

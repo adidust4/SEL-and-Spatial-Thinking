@@ -104,6 +104,7 @@ function showHouse() {
   for (const e of document.getElementsByClassName("house")) {
     e.style.visibility="visible";
   }
+  document.getElementById("previous").style.display = "none";
   document.getElementById("nextChoice1").style.display = "none";
   document.getElementById("nextChoice2").style.display = "none";
   for (const e of document.getElementsByClassName("map")) {
@@ -140,9 +141,9 @@ function showHouse() {
       document.getElementById("next").style.visibility = "visible";
     } else if (document.getElementById("house2").style.display == "inline") {
       document.getElementById("house2").style.display = "none";
+      document.getElementById("previous").style.display = "inline";
       document.getElementById("house3").style.display = "inline";
       document.getElementById("instr").style.display = "block";
-      // document.getElementById("next").setAttribute("disabled, true");
     } else if (document.getElementById("house3").style.display == "inline"  && (backClicked)) {
       document.getElementById("house3").style.display = "none";
       document.getElementById("house4").style.display = "inline";
@@ -150,9 +151,10 @@ function showHouse() {
       document.getElementById("house4").style.display = "none";
       document.getElementById("house5").style.display = "inline";
     } else if (document.getElementById("house5").style.display == "inline" && (leftClicked)) {
-      document.getElementById("house5").style.display = "none";
-      document.getElementById("instr").style.display = "none";
-      document.getElementById("house6").style.display = "inline";
+    document.getElementById("previous").style.display = "none";
+    document.getElementById("house5").style.display = "none";
+    document.getElementById("instr").style.display = "none";
+    document.getElementById("house6").style.display = "inline";
     } else if (document.getElementById("house6").style.display == "inline") {
       document.getElementById("house6").style.display = "none";
       document.getElementById("house7").style.display = "inline";
@@ -265,6 +267,25 @@ function backToChoices2() {
   document.getElementById("choice2-2").style.display = "block";
   document.getElementById("choice2-3").style.display = "block";
   document.getElementById("next").style.display = "inline";
+}
+
+/**
+ * Changes the text for the main dialogue back to the previous text during the 
+ * house activity.
+ */
+function changeTextBack() {
+  if (document.getElementById("house3").style.display == "inline") {
+    document.getElementById("house3").style.display = "none";
+    document.getElementById("previous").style.display = "none";
+    document.getElementById("instr").style.display = "none";
+    document.getElementById("house2").style.display = "inline";
+  } else if (document.getElementById("house4").style.display == "inline") {
+    document.getElementById("house4").style.display = "none";
+    document.getElementById("house3").style.display = "inline";
+  } else if (document.getElementById("house5").style.display == "inline") {
+    document.getElementById("house5").style.display = "none";
+    document.getElementById("house4").style.display = "inline";
+  }
 }
 
 // variables for columns of map areas. 0-0 translates to zerozero, etc

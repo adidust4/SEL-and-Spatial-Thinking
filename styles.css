@@ -29,10 +29,6 @@
     padding-top: 1%;
 }
 
-/* .clickableStreet {
-    
-} */
-
 .test {
     visibility: hidden;
     position: absolute;
@@ -71,12 +67,13 @@
 .dialogue-button {
     width: 1.5in;
     background-color: rgb(207, 220, 252);
-    border: none;
+    border: 3px solid black;
     cursor: pointer;
     font-size: 4.5vw;
     transition-duration: 0.4s;
     float: right;
     position: relative;
+    margin: 0.5%
 }
 .dialogue-button:hover {
     background-color: rgb(161, 187, 255);
@@ -85,7 +82,7 @@
 .dialogueChoice-button {
     width: 1.5in;
     background-color: rgb(207, 220, 252);
-    border: none;
+    border: 3px solid black;
     cursor: pointer;
     font-size: 4.5vw;
     transition-duration: 0.4s;
@@ -96,31 +93,32 @@
     background-color: rgb(161, 187, 255);
 }
 
-.choice-button {
+.user-choice-button {
     background-color: rgb(207, 220, 252);
-    border: none;
+    border: 3px solid black;
     cursor: pointer;
     font-size: 1.5vw;
     transition-duration: 0.4s;
     position: relative;
     display: none;
     padding: 1%;
+    margin: 0.5%;
 }
 
-.choice-button:hover {
+.user-choice-button:hover {
     background-color: rgb(161, 187, 255);
 }
 
 .start-button {
-    width: 1.5in;
     color: black;
     background-color: rgb(59, 218, 59);
     border: 5px solid black;
     cursor: pointer;
-    font-size: 2.75vw;
+    font-size: 2.5vw;
     transition-duration: 0.4s;
     position: absolute;
     margin-top: 2%;
+    padding: 1%;
 }
 .start-button:hover {
     background-color: rgb(225, 251, 224);
